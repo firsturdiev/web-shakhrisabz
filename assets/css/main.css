@@ -1,0 +1,116 @@
+/* Fonts
+
+/* !!! Qo'shilishi kerak */
+
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css');
+
+/* Starter */
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+html {
+  min-height: 100vh;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  font-family: "Golos Text", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  font-variant-numeric: lining-nums proportional-nums;
+  color: #000;
+  background-color: #fff;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: block;
+  padding: 0;
+}
+
+.site-content {
+  flex: 1 0 auto;
+}
+
+.site-footer {
+  flex-shrink: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1680px;
+  padding: 0 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 64px;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .container {
+    padding: 0;
+  }
+}
+
