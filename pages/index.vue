@@ -119,26 +119,12 @@
         <h2 class="projects__title">Инвестиционные проекты</h2>
 
         <ul class="projects__list">
-          <li class="projects__item project">
-            <img class="project__poster" src="~/assets/img/bg-project.jpg">
-            <h3 class="project__title">Встреча с директором Проектного бюро «Росатом» Юрием Мишиным</h3>
-            <p class="project__info">Мероприятие, значимое для торгово-экономической, политико-социальной и
-              культурно-гуманитарной сфер наших стран, стартовало Мероприятие, значимое для торгово-экономической,
-              политико-социальной и культурно-гуманитарной сфер наших стран, стартовало</p>
-          </li>
-          <li class="projects__item project">
-            <img class="project__poster" src="~/assets/img/bg-project.jpg">
-            <h3 class="project__title">Встреча с директором Проектного бюро «Росатом» Юрием Мишиным</h3>
-            <p class="project__info">Мероприятие, значимое для торгово-экономической, политико-социальной и
-              культурно-гуманитарной сфер наших стран, стартовало Мероприятие, значимое для торгово-экономической,
-              политико-социальной и культурно-гуманитарной сфер наших стран, стартовало</p>
-          </li>
-          <li class="projects__item project">
-            <img class="project__poster" src="~/assets/img/bg-project.jpg">
-            <h3 class="project__title">Встреча с директором Проектного бюро «Росатом» Юрием Мишиным</h3>
-            <p class="project__info">Мероприятие, значимое для торгово-экономической, политико-социальной и
-              культурно-гуманитарной сфер наших стран, стартовало Мероприятие, значимое для торгово-экономической,
-              политико-социальной и культурно-гуманитарной сфер наших стран, стартовало</p>
+          <li class="projects__item project" v-for="item in projects">
+            <img class="project__poster" :src="item.photo">
+            <h3 class="project__title">{{ item.title_ru }}</h3>
+            <p class="project__info">
+              <a :href="'/projects/' + item.id">Подробнее</a>
+            </p>
           </li>
         </ul>
       </div>
@@ -275,32 +261,11 @@
         </div> -->
 
         <ul class="news__list">
-          <li class="news__item new">
-            <img class="new__poster" src="~/assets/img/bg-new-3.jpg" />
+          <li class="news__item new" v-for="item in news">
+            <img class="new__poster" :src="item.photo" />
             <div class="new__inner">
-              <h3 class="new__title">Медресе Абдулкасим</h3>
-              <a class="new__link" href="/news">Подробно</a>
-            </div>
-          </li>
-          <li class="news__item new">
-            <img class="new__poster" src="~/assets/img/bg-new-1.jpg" />
-            <div class="new__inner">
-              <h3 class="new__title">Гостиница «Узбекистан»</h3>
-              <a class="new__link" href="/news">Подробно</a>
-            </div>
-          </li>
-          <li class="news__item new">
-            <img class="new__poster" src="~/assets/img/bg-new-2.jpg" />
-            <div class="new__inner">
-              <h3 class="new__title">Ташкентская Телебашня</h3>
-              <a class="new__link" href="/news">Подробно</a>
-            </div>
-          </li>
-          <li class="news__item new">
-            <img class="new__poster" src="~/assets/img/bg-new-3.jpg" />
-            <div class="new__inner">
-              <h3 class="new__title">Дворец международных форумов</h3>
-              <a class="new__link" href="/news">Подробно</a>
+              <h3 class="new__title">{{ item.title_ru }}</h3>
+              <a class="new__link" :href="'/news/' + item.id">Подробно</a>
             </div>
           </li>
         </ul>
@@ -316,18 +281,10 @@
         <h2 class="galleries__title">Фотогалерея</h2>
 
         <ul class="galleries__list">
-          <li class="galleries__item gallery">
-            <img class="gallery__poster" src="~/assets/img/bg-gallery-1.jpg">
+          <li class="galleries__item gallery" v-for="item in photos">
+            <img class="gallery__poster" :src="item.photo">
           </li>
-          <li class="galleries__item gallery">
-            <img class="gallery__poster" src="~/assets/img/bg-gallery-1.jpg">
-          </li>
-          <li class="galleries__item gallery">
-            <img class="gallery__poster" src="~/assets/img/bg-gallery-1.jpg">
-          </li>
-          <li class="galleries__item gallery">
-            <img class="gallery__poster" src="~/assets/img/bg-gallery-1.jpg">
-          </li>
+
         </ul>
       </div>
     </div>
@@ -601,14 +558,16 @@
   text-transform: uppercase;
 }
 
-.news .container {
+/* .news .container {
   padding-right: 0;
-}
+} */
 
 .news__list {
   display: flex;
-  column-gap: 13px;
-  overflow-x: scroll;
+  /* column-gap: 13px; */
+  row-gap: 16px;
+  flex-direction: column;
+  /* overflow-x: scroll; */
 }
 
 .news__list::-webkit-scrollbar {
@@ -619,14 +578,14 @@
   flex-shrink: 0;
 }
 
-.news__item:last-child {
+/* .news__item:last-child {
   margin-right: 16px;
-}
+} */
 
 .new__poster {
   width: 100%;
   object-fit: cover;
-  height: 124px;
+  height: 230px;
 }
 
 .new {
@@ -657,6 +616,17 @@
   line-height: 12.8px;
 }
 
+/* .new__link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: #000; */
+  /* opacity: 0.5; */
+/* } */ 
+
 .new__link::after {
   content: '';
   position: absolute;
@@ -684,14 +654,16 @@
   text-transform: uppercase;
 }
 
-.galleries .container {
+/* .galleries .container {
   padding-right: 0;
-}
+} */
 
 .galleries__list {
   display: flex;
-  column-gap: 8px;
-  overflow-x: scroll;
+  flex-direction: column;
+  /* column-gap: 8px; */
+  gap: 16px;
+  /* overflow-x: scroll; */
 }
 
 .galleries__list::-webkit-scrollbar {
@@ -704,14 +676,14 @@
   flex-grow: 1;
 }
 
-.galleries__item:last-child {
+/* .galleries__item:last-child {
   margin-right: 16px;
-}
+} */
 
 .gallery__poster {
   width: 100%;
   object-fit: cover;
-  height: 120px;
+  height: 250px;
 }
 
 .gallery {
@@ -902,8 +874,13 @@
   .projects__list {
     flex-direction: row;
     column-gap: 13px;
+    flex-wrap: wrap;
   }
 
+  .projects__item {
+    width: 48%;
+  }
+  
   .projects__item:not(:last-child) {
     padding-bottom: 0;
     border-bottom: 0;
@@ -939,6 +916,16 @@
     margin-right: 0;
   }
 
+  .news__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .new {
+    width: 48%;
+  }
+
   /* GALLERIES */
 
   .galleries {
@@ -952,7 +939,17 @@
   }
 
   .gallery__poster {
-    height: 150px;
+    height: 300px;
+  }
+
+  .galleries__list {
+    flex-direction: row;
+    column-gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .galleries__item {
+    width: 48%;
   }
 
   /* PARTNERS */
@@ -1110,6 +1107,10 @@
     column-gap: 24px;
   }
 
+  .projects__item {
+    width: 23%;
+  }
+
   .project__poster {
     margin-bottom: 24px;
   }
@@ -1142,11 +1143,13 @@
   }
 
   .news__item {
-    width: 20%;
-    flex-grow: 1;
+    width: 24%;
+    /* flex-grow: 1; */
     /* border-radius: 5px;
     overflow: hidden; */
   }
+
+  /* nels */
 
   .new__inner {
     padding: 24px;
@@ -1215,10 +1218,32 @@
 }
 </style>
 
-<script>
-// export default {
-//   mounted() {
-//     new Glide('.news__slider').mount()
-//   }
-// }
+<script setup>
+// Fetch photos object from /api/galleries
+// Fetch news object from /api/news
+
+import { ref } from 'vue'
+
+const photos = ref([])
+const fetchPhotos = async () => {
+  const res = await fetch('/api/galleries')
+  photos.value = await res.json()
+}
+
+const news = ref([])
+const fetchNews = async () => {
+  const res = await fetch('/api/news')
+  news.value = await res.json()
+}
+
+
+const projects = ref([])
+const fetchProjects = async () => {
+  const res = await fetch('/api/projects')
+  projects.value = await res.json()
+}
+
+fetchPhotos()
+fetchNews()
+fetchProjects()
 </script>
