@@ -7,7 +7,7 @@
         </a>
 
         <div class="site-footer__center">
-          <a class="site-footer__tel" href="tel:+998900000000">+998 90 000 00 00</a>
+          <!-- <a class="site-footer__tel" href="tel:+998900000000">+998 90 000 00 00</a> -->
 
           <div class="socials">
             <a class="socials__item social" href="#" target="_blank">
@@ -29,10 +29,17 @@
         </div>
 
         <div class="links">
-          <a class="links__item link" href="/">Главная</a>
-          <a class="links__item link" href="/forum">Образовательный форум</a>
-          <a class="links__item link" href="/forum">Инвестиционный форум</a>
-          <a class="links__item link" href="#site-footer">Контакты</a>
+          <a class="links__item link" href="/">{{ $t('menu.home') }}</a>
+          <a class="links__item link" href="/menu/1">{{ $t('menu.dropdown.1') }}</a>
+          <a class="links__item link" href="/menu/2">{{ $t('menu.dropdown.2') }}</a>
+          <a class="links__item link" href="/menu/3">{{ $t('menu.dropdown.3') }}</a>
+          <a class="links__item link" href="/menu/4">{{ $t('menu.dropdown.4') }}</a>
+          <a class="links__item link" href="/menu/5">{{ $t('menu.dropdown.5') }}</a>
+          <a class="links__item link" href="/menu/6">{{ $t('menu.dropdown.6') }}</a>
+          <a class="links__item link" href="/menu/7">{{ $t('menu.dropdown.7') }}</a>
+          <!-- <a class="links__item link" href="/forum">Образовательный форум</a> -->
+          <!-- <a class="links__item link" href="/forum">Инвестиционный форум</a> -->
+          <!-- <a class="links__item link" href="#site-footer">Контакты</a> -->
         </div>
       </div>
     </div>
@@ -41,8 +48,8 @@
   <div class="copyright">
     <div class="container">
       <div class="copyright_inner">
-        <p class="copyright__text">© Shakhrisabz 2024. Все права защищены</p>
-        <p class="copyright__text">При использовании материалов сайта ссылка на источник обязательна.</p>
+        <p class="copyright__text">{{ $t('copyright.title') }}</p>
+        <p class="copyright__text">{{ $t('copyright.text') }}</p>
       </div>
     </div>
   </div>

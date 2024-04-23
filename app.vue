@@ -7,3 +7,8 @@
 
   <Footer />
 </template>
+
+<script setup>
+const {locale} = useI18n()
+locale.value = localStorage.getItem('locale') || 'ru'
+</script>

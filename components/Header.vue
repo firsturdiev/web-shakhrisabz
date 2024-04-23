@@ -10,15 +10,36 @@
 
         <div class="site-header__hidden">
           <nav class="navbar">
-            <a class="navbar__link" href="/">Главная</a>
-            <a class="navbar__link" href="/forum">Инвестиционный форум</a>
-            <a class="navbar__link" href="/forum">Образовательный форум</a>
-            <a class="navbar__link" href="#site-footer">Контакты</a>
+            <a class="navbar__link" href="/">{{ $t('menu.home') }}</a>
+            <button class="navbar__link btn-lang" @click="toggleDropdown1">
+              {{ $t('menu.information') }}
+
+              <div class="navbar__dropdown" v-show="showDropdown1">
+                <a class="navbar__dropdown-link" href="/menu/1">{{ $t('menu.dropdown.1') }}</a>
+                <a class="navbar__dropdown-link" href="/menu/2">{{ $t('menu.dropdown.2') }}</a>
+                <a class="navbar__dropdown-link" href="/menu/3">{{ $t('menu.dropdown.3') }}</a>
+                <a class="navbar__dropdown-link" href="/menu/4">{{ $t('menu.dropdown.4') }}</a>
+                <a class="navbar__dropdown-link" href="/menu/5">{{ $t('menu.dropdown.5') }}</a>
+                <a class="navbar__dropdown-link" href="/menu/6">{{ $t('menu.dropdown.6') }}</a>
+                <a class="navbar__dropdown-link" href="/menu/7">{{ $t('menu.dropdown.7') }}</a>
+              </div>
+            </button>
+            <!-- <a class="navbar__link" href="#site-footer">{{ $t('menu.contact') }}</a> -->
           </nav>
 
-          <button class="btn-lang">Русский</button>
+          <button class="btn-lang" @click="toggleDropdown2">
+            {{ $t('selectLanguage') }}
 
-          <a class="btn-register" href="/register">Зарегистрироваться</a>
+            <div class="navbar__dropdown" v-show="showDropdown2">
+              <button class="navbar__dropdown-link" @click="() => setLocale('en')">English</button>
+              <button class="navbar__dropdown-link" @click="() => setLocale('fr')">Français</button>
+              <button class="navbar__dropdown-link" @click="() => setLocale('ar')">عربي</button>
+              <button class="navbar__dropdown-link" @click="() => setLocale('ru')">Русский</button>
+              <button class="navbar__dropdown-link" @click="() => setLocale('uz')">O'zbekcha</button>
+            </div>
+          </button>
+
+          <a class="btn-register" href="/register">{{ $t('menu.register') }}</a>
         </div>
       </div>
     </div>
@@ -53,10 +74,10 @@
   justify-content: space-between;
 }
 
-.site-header__logo-img {
+/* .site-header__logo-img {
   width: 64px;
   height: 24px;
-}
+} */
 
 .site-header__toggle {
   width: 24px;
@@ -100,10 +121,31 @@
   }
 
   .btn-lang {
-    margin-right: 16px;
+    position: relative;
     color: #fff;
     display: flex;
     column-gap: 4px;
+    align-items: center;
+  }
+
+  .btn-lang .navbar__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* display:/ none; */
+    flex-direction: column;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 3px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  .btn-lang .navbar__dropdown-link {
+    width: 100%;
+    color: #020C4C;
+    padding: 8px 12px;
+    border-radius: 3px;
   }
 
   .btn-lang::after {
@@ -114,6 +156,7 @@
   }
 
   .btn-register {
+    margin-left: 16px;
     color: #fff;
     padding: 8px 12px;
     background-color: #19A2DB;
@@ -128,8 +171,8 @@
   }
 
   .site-header__logo-img {
-    width: 130px;
-    height: 48px;
+    width: 200px;
+    height: 70px;
   }
 
   .navbar {
@@ -143,9 +186,8 @@
     line-height: 24px;
   }
 
-  .btn-lang {
-    margin-right: 40px;
-  }
+  /* .btn-lang {
+  } */
 
   .btn-lang::after {
     width: 24px;
@@ -153,6 +195,7 @@
   }
 
   .btn-register {
+    margin-left: 40px;
     padding: 12px 24px;
     font-size: 16px;
     line-height: 24px;
@@ -160,10 +203,26 @@
 }
 </style>
 
-<!-- <script>
-export default {
-  mounted() {
-    document.querySelector('.site-header--dark .site-header__toggle').src = '/_nuxt/assets/img/logo-dark.svg';
-  }
+<script setup>
+import { ref, watch } from 'vue'
+const { locale } = useI18n()
+
+const setLocale = (lang) => {
+  locale.value = lang
+  localStorage.setItem('locale', lang)
 }
-</script> -->
+
+watch(locale, (newLocale) => {
+  localStorage.setItem('locale', newLocale)
+})
+
+const showDropdown1 = ref(false);
+const showDropdown2 = ref(false);
+
+const toggleDropdown1 = () => {
+  showDropdown1.value = !showDropdown1.value;
+};
+const toggleDropdown2 = () => {
+  showDropdown2.value = !showDropdown2.value;
+};
+</script>

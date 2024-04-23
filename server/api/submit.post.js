@@ -3,7 +3,7 @@ const apiToken = '062cb83ada9b68aa62bfa55f46202d35f2dcf035657e5e38c522ce40de966a
 export default defineEventHandler(async (event) => {
   const data = await readBody(event);
 
-  const isCode = await fetch(`http://207.154.250.85:4011/api/codes?filters[code][$eq]=${data.code}`, {
+  const isCode = await fetch(`https://admin.shakhrisabz-2024.uz/api/codes?filters[code][$eq]=${data.code}`, {
     headers: {
       'Authorization': `Bearer ${apiToken}`
     }
@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
   const imageFormData = new FormData();
   imageFormData.append('files', imageBlob, 'image.png');
 
-  const imageUploadResponse = await fetch('http://207.154.250.85:4011/api/upload', {
+  const imageUploadResponse = await fetch('https://admin.shakhrisabz-2024.uz/api/upload', {
     method: 'post',
     body: imageFormData,
     headers: {
@@ -74,7 +74,7 @@ export default defineEventHandler(async (event) => {
     uid
   };
 
-  const res = await fetch('http://207.154.250.85:4011/api/requesters', {
+  const res = await fetch('https://admin.shakhrisabz-2024.uz/api/requesters', {
     method: 'post',
     body: JSON.stringify({
       data: jsonn

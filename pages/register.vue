@@ -10,41 +10,41 @@
     <img class="register__bg" src="~/assets/img/bg-register.jpg" />
 
     <div class="screen screen--one screen--active">
-      <p class="register__title register__title--one">Регистрационный код</p>
-      <p class="register__subtitle register__subtitle--one">Введите код</p>
-      <input class="register__input register__input--one" placeholder="Введите код из пригласительного">
-      <button class="register__btn register__btn--one">Продолжать</button>
+      <p class="register__title register__title--one">{{ $t('register.registerCode') }}</p>
+      <p class="register__subtitle register__subtitle--one">{{ $t('register.writeCode') }}</p>
+      <input class="register__input register__input--one" :placeholder="$t('register.placeholder')">
+      <button class="register__btn register__btn--one">{{ $t('register.continue') }}</button>
     </div>
 
     <div class="screen screen--two">
-      <p class="register__title register__title--two">Регистрационны данные</p>
+      <p class="register__title register__title--two">{{ $t('register.contents') }}</p>
 
       <form class="register__form" method="post" style="display: contents;">
         <label class="register__input-wrapper w-50">
-          <span class="register__input-title">Имя:</span>
-          <input class="register__input" placeholder="Введите имя" name="first_name" required>
+          <span class="register__input-title">{{ $t('register.name') }}</span>
+          <input class="register__input" :placeholder="$t('register.name')" name="first_name" required>
         </label>
 
         <label class="register__input-wrapper w-50">
-          <span class="register__input-title">Фамилия:</span>
-          <input class="register__input" placeholder="Введите фамилию" name="last_name" required>
+          <span class="register__input-title">{{ $t('register.surname') }}</span>
+          <input class="register__input" :placeholder="$t('register.surnamePl')" name="last_name" required>
         </label>
 
         <label class="register__input-wrapper w-50">
-          <span class="register__input-title">Дата рождения:</span>
-          <input class="register__input" placeholder="Выберите дату рождения" type="date" name="birth_date" required>
+          <span class="register__input-title">{{ $t('register.birthDate') }}</span>
+          <input class="register__input" :placeholder="$t('register.birthDatePl')" type="date" name="birth_date" required>
         </label>
 
         <label class="register__input-wrapper w-50">
-          <span class="register__input-title">Электронная почта:</span>
-          <input class="register__input" placeholder="Введите электронную почту" type="email" name="email_address"
+          <span class="register__input-title">{{ $t('register.email') }}</span>
+          <input class="register__input" :placeholder="$t('register.emailPl')" type="email" name="email_address"
             required>
         </label>
 
         <label class="register__input-wrapper">
-          <span class="register__input-title">Государство:</span>
+          <span class="register__input-title">{{ $t('register.citizenship') }}</span>
           <select class="register__input" name="country" required>
-            <option selected disabled value="">Выберите государство</option>
+            <option selected disabled value="">{{ $t('register.citizenship') }}</option>
             <option value="Afghanistan">Afghanistan</option>
             <option value="Åland Islands">Åland Islands</option>
             <option value="Albania">Albania</option>
@@ -301,57 +301,57 @@
         </label>
 
         <label class="register__input-wrapper w-50">
-          <span class="register__input-title">Серия и номер паспорта:</span>
+          <span class="register__input-title">{{ $t('register.passport') }}</span>
           <!-- <div class="register__multiple"> -->
           <!-- <input class="register__input w-20" placeholder="AA"> -->
-          <input class="register__input" placeholder="Введите серия и номер" type="text" minlength="5"
+          <input class="register__input" :placeholder="$t('register.passportPl')" type="text" minlength="5"
             name="passport_id" required>
           <!-- </div> -->
         </label>
 
         <label class="register__input-wrapper w-50">
-          <span class="register__input-title">Срок действия паспорта:</span>
-          <input class="register__input" placeholder="Введите срок действия" type="date" name="passport_date" required>
+          <span class="register__input-title">{{ $t('register.passportDate') }}</span>
+          <input class="register__input" :placeholder="$t('register.passportDate')" type="date" name="passport_date" required>
         </label>
 
         <label class="register__input-wrapper">
-          <span class="register__input-title">Организация:</span>
+          <span class="register__input-title">{{ $t('register.organization') }}</span>
           <select class="register__input" name="organization" required>
-            <option selected disabled value="">Выберите организация</option>
+            <option selected disabled value="">{{ $t('register.organizationPl') }}</option>
             <option v-for="organization in organizations" :value="organization.title">{{ organization.title }}</option>
           </select>
         </label>
 
         <label class="register__input-wrapper w-50">
-          <span class="register__input-title">Название организации:</span>
-          <input class="register__input" placeholder="Введите название организации" name="organization_info" required>
+          <span class="register__input-title">{{ $t('register.organizationInfo') }}</span>
+          <input class="register__input" :placeholder="$t('register.organizationInfoPl')" name="organization_info" required>
         </label>
 
         <label class="register__input-wrapper w-50">
-          <span class="register__input-title">Должность:</span>
-          <input class="register__input" placeholder="Введите должность" name="organization_position" required>
+          <span class="register__input-title">{{ $t('register.position') }}</span>
+          <input class="register__input" :placeholder="$t('register.position')" name="organization_position" required>
         </label>
 
         <label class="register__input-wrapper w-50">
-          <span class="register__input-title">Загрузите 3х4 фотографию:</span>
-          <input class="register__input" placeholder="Выберите файл" type="file" name="photo" required>
+          <span class="register__input-title">{{ $t('register.photo') }}</span>
+          <input class="register__input" :placeholder="$t('register.photo')" type="file" name="photo" required>
         </label>
 
-        <button class="register__btn register__btn--two" type="submit">Зарегистрироваться</button>
+        <button class="register__btn register__btn--two" type="submit">{{ $t('register.title') }}</button>
       </form>
 
-      <p class="offer">Нажимая на кнопку “Продолжить” вы соглашаетесь c
-        <a class="offer__link" href="#">Договором
-          Оферты</a> и
-        <a class="offer__link" href="#">Политикой
-          Конфиденциальности</a> UNWTO
+      <p class="offer">
+        {{ $t('register.offer1') }}
+        <a class="offer__link" href="#">{{ $t('register.offer2') }}</a>
+        {{ $t('register.offer3') }}
+        <a class="offer__link" href="#">{{ $t('register.offer4') }}</a> 
       </p>
     </div>
 
     <div class="screen screen--three">
-      <p class="register__title register__title--three">Вы успешно прошли регистрацию</p>
-      <p class="register__subtitle register__subtitle--three">Ваш ID код</p>
-      <p class="register__title register__title--three" id="uid">GA 1234567</p>
+      <p class="register__title register__title--three">{{ $t('success.title') }}</p>
+      <p class="register__subtitle register__subtitle--three">{{ $t('success.id') }}</p>
+      <p class="register__title register__title--three" id="uid"></p>
     </div>
   </section>
 </template>

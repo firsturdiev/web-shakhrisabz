@@ -4,7 +4,7 @@
     <div class="container">
       <div class="hero_inner">
         <img class="hero__logo" src="~/assets/img/logo-hero.svg">
-        <a class="hero__btn" href="/register">Зарегистрироваться</a>
+        <a class="hero__btn" href="/register">{{ $t('main.register') }}</a>
       </div>
     </div>
   </section>
@@ -19,10 +19,10 @@
     <div class="container">
       <div class="about__inner">
         <h1 class="about__title">Shakhrisabz 2024</h1>
-        <p class="about__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
+        <!-- <p class="about__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
           национальных проектов, наращивания экономического потенциала и демонстрации инвестиционных возможностей
           субъектов Республики Узбекистан с целью обеспечения благополучия и достижения нового качества жизни граждан
-          Узбекистана.</p>
+          Узбекистана.</p> -->
 
         <iframe class="about__video" loading="lazy"
           src="https://www.youtube-nocookie.com/embed/48PSJqwZVIc?rel=0&iv_load_policy=3"
@@ -31,29 +31,13 @@
 
         <div class="about__forum forum">
           <div class="forum__start">
-            <h2 class="forum__title">Инвестиционный форум</h2>
+            <h2 class="forum__title">{{ $t('about.title') }}</h2>
 
             <div class="forum__start-inner">
-              <p class="forum__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
-                национальных проектов, наращивания экономического потенциала и демонстрации инвестиционных возможностей
-                субъектов Республики Узбекистан с целью обеспечения благополучия и достижения нового качества жизни
-                граждан
-                Узбекистана.</p>
-              <p class="forum__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
-                национальных проектов, наращивания экономического потенциала и демонстрации инвестиционных возможностей
-                субъектов Республики Узбекистан с целью обеспечения благополучия и достижения нового качества жизни
-                граждан
-                Узбекистана.</p>
-              <p class="forum__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
-                национальных проектов, наращивания экономического потенциала и демонстрации инвестиционных возможностей
-                субъектов Республики Узбекистан с целью обеспечения благополучия и достижения нового качества жизни
-                граждан
-                Узбекистана.</p>
-              <p class="forum__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
-                национальных проектов, наращивания экономического потенциала и демонстрации инвестиционных возможностей
-                субъектов Республики Узбекистан с целью обеспечения благополучия и достижения нового качества жизни
-                граждан
-                Узбекистана.</p>
+              <p class="forum__info">{{ $t('about.text1') }}</p>
+              <p class="forum__info">{{ $t('about.text2') }}</p>
+              <p class="forum__info">{{ $t('about.text3') }}</p>
+              <p class="forum__info">{{ $t('about.text4') }}</p>
             </div>
           </div>
 
@@ -116,14 +100,14 @@
   <section class="projects">
     <div class="container">
       <div class="projects__inner">
-        <h2 class="projects__title">Инвестиционные проекты</h2>
+        <h2 class="projects__title">{{ $t('projects.title') }}</h2>
 
         <ul class="projects__list">
           <li class="projects__item project" v-for="item in projects">
             <img class="project__poster" :src="item.photo">
-            <h3 class="project__title">{{ item.title_ru }}</h3>
+            <h3 class="project__title">{{ item[`title_${locale}`] }}</h3>
             <p class="project__info">
-              <a :href="'/projects/' + item.id">Подробнее</a>
+              <a :href="'/projects/' + item.id">{{ $t('projects.more') }}</a>
             </p>
           </li>
         </ul>
@@ -133,29 +117,14 @@
 
   <!-- FORUM-SECOND -->
 
-  <section class="forum-second">
+  <!-- <section class="forum-second">
     <div class="container">
       <div class="forum-second__inner">
         <div class="forum-second__forum forum">
           <div class="forum__start">
-            <h2 class="forum__title">Образовательный форум</h2>
+            <h2 class="forum__title">{{ $t('1.title') }}</h2>
 
             <div class="forum__start-inner">
-              <p class="forum__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
-                национальных проектов, наращивания экономического потенциала и демонстрации инвестиционных возможностей
-                субъектов Республики Узбекистан с целью обеспечения благополучия и достижения нового качества жизни
-                граждан
-                Узбекистана.</p>
-              <p class="forum__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
-                национальных проектов, наращивания экономического потенциала и демонстрации инвестиционных возможностей
-                субъектов Республики Узбекистан с целью обеспечения благополучия и достижения нового качества жизни
-                граждан
-                Узбекистана.</p>
-              <p class="forum__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
-                национальных проектов, наращивания экономического потенциала и демонстрации инвестиционных возможностей
-                субъектов Республики Узбекистан с целью обеспечения благополучия и достижения нового качества жизни
-                граждан
-                Узбекистана.</p>
               <p class="forum__info">Главный региональный форум страны и ключевая площадка для обсуждения реализации
                 национальных проектов, наращивания экономического потенциала и демонстрации инвестиционных возможностей
                 субъектов Республики Узбекистан с целью обеспечения благополучия и достижения нового качества жизни
@@ -216,14 +185,14 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- NEWS -->
 
   <section class="news">
     <div class="container">
       <div class="news__inner">
-        <h2 class="news__title">Новости</h2>
+        <h2 class="news__title">{{ $t('news.title') }}</h2>
 
         <!-- <div class="news__slider glide">
           <div class="glide__track" data-glide-el="track">
@@ -264,8 +233,8 @@
           <li class="news__item new" v-for="item in news">
             <img class="new__poster" :src="item.photo" />
             <div class="new__inner">
-              <h3 class="new__title">{{ item.title_ru }}</h3>
-              <a class="new__link" :href="'/news/' + item.id">Подробно</a>
+              <h3 class="new__title">{{ item[`title_${locale}`] }}</h3>
+              <a class="new__link" :href="'/news/' + item.id">{{ $t('news.more') }}</a>
             </div>
           </li>
         </ul>
@@ -278,7 +247,7 @@
   <section class="galleries">
     <div class="container">
       <div class="galleries__inner">
-        <h2 class="galleries__title">Фотогалерея</h2>
+        <h2 class="galleries__title">{{ $t('gallery.title') }}</h2>
 
         <ul class="galleries__list">
           <li class="galleries__item gallery" v-for="item in photos">
@@ -295,7 +264,7 @@
   <section class="partners">
     <div class="container">
       <div class="partners__inner">
-        <h2 class="partners__title">Партнеры</h2>
+        <h2 class="partners__title">{{ $t('partners.title') }}</h2>
 
         <ul class="partners__list">
           <li class="partners__item partner">
@@ -307,9 +276,9 @@
           <li class="partners__item partner">
             <img class="partner__poster" src="~/assets/img/partners-3.png">
           </li>
-          <li class="partners__item partner">
+          <!-- <li class="partners__item partner">
             <img class="partner__poster" src="~/assets/img/partners-1.png">
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -336,10 +305,10 @@
 .hero::before {
   content: '';
   position: absolute;
-  top: -44px;
+  top: -80px;
   left: 0;
   width: 100%;
-  height: calc(100% + 44px);
+  height: calc(100% + 100px);
   background-image: url('~/assets/img/bg-hero.jpg');
   background-size: cover;
   z-index: -1;
@@ -351,6 +320,7 @@
 }
 
 .hero__btn {
+  text-align: center;
   font-weight: 500;
   background-image: url('~/assets/img/bg-hero-btn.svg');
   width: 157px;
@@ -713,8 +683,10 @@
 
 .partners__list {
   display: flex;
-  column-gap: 8px;
+  gap: 16px;
   overflow-x: scroll;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .partners__list::-webkit-scrollbar {
@@ -723,6 +695,7 @@
 
 .partners__item {
   flex-shrink: 0;
+  width: 100%;
 }
 
 .partners__item:last-child {
@@ -761,8 +734,8 @@
 
   .hero::before {
     background-image: url('~/assets/img/bg-hero-tablet.jpg');
-    height: calc(100% + 48px);
-    top: -48px;
+    height: calc(100% + 70px);
+    top: -70px;
   }
 
   .hero__btn::after {
@@ -968,6 +941,10 @@
     column-gap: 42px;
   }
 
+  .partners__item {
+    width: auto;
+  }
+
 }
 
 @media screen and (min-width: 1300px) {
@@ -989,8 +966,8 @@
   }
 
   .hero::before {
-    height: calc(100% + 72px);
-    top: -72px;
+    height: calc(100% + 110px);
+    top: -100px;
     background-image: url('~/assets/img/bg-hero-desktop.jpg');
   }
 
@@ -1223,6 +1200,8 @@
 // Fetch news object from /api/news
 
 import { ref } from 'vue'
+
+const { locale } = useI18n()
 
 const photos = ref([])
 const fetchPhotos = async () => {

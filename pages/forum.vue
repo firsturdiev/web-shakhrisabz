@@ -130,7 +130,7 @@
 export default {
   mounted() {
     document.querySelector('.site-header').classList.add('site-header--dark');
-    document.querySelector('.site-header--dark .site-header__logo-img').src = '/_nuxt/assets/img/logo-dark.svg';
+    document.querySelector('.site-header--dark .site-header__logo-img').src = '/logo-dark.svg';
   }
 }
 </script>
