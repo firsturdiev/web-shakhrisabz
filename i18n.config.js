@@ -6,9 +6,9 @@ import uz from './locales/uz.json';
 
 export default defineI18nConfig(() => ({
   legacy: false,
-  locales: ['en', 'ru'],
-  locale: 'ru',
-  fallabackLocale: 'ru',
+  locales: ['en', 'ru', 'fr', 'ar', 'uz'],
+  locale: 'en',
+  fallabackLocale: 'en',
   messages: {
     en: {
       ...en,

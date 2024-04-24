@@ -43,50 +43,77 @@
 
           <div class="forum__end">
             <div class="forum__controls">
-              <button class="forum__btn forum__btn--active">Первый день</button>
-              <button class="forum__btn">Второй день</button>
+              <button class="forum__btn" :class="{ 'forum__btn--active': activeDay == 1 }" @click="changeDay(1)">
+                {{ $t('plan.firstDay.title') }}
+              </button>
+              <button class="forum__btn" :class="{ 'forum__btn--active': activeDay == 2 }" @click="changeDay(2)">
+                {{ $t('plan.secondDay.title') }}
+              </button>
+              <button class="forum__btn" :class="{ 'forum__btn--active': activeDay == 3 }" @click="changeDay(3)">
+              {{ $t('plan.thirdDay.title') }}
+            </button>
             </div>
 
             <div class="forum__end-inner">
-              <div class="forum__item">
-                <span class="forum__item-date">10:00 - 10:10</span>
-                <p class="forum__item-title">Начальная часть</p>
+              <div class="forum__first-day" style="display: contents;" v-show="activeDay == 1">
+                <div class="forum__item">
+                  <span class="forum__item-date">16:30 - 17:00</span>
+                  <p class="forum__item-title">{{ $t('plan.firstDay.1') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">17:00 - 18:30</span>
+                  <p class="forum__item-title">{{ $t('plan.firstDay.2') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">18:30 - 19:00</span>
+                  <p class="forum__item-title">{{ $t('plan.firstDay.3') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">19:00 - 20:30</span>
+                  <p class="forum__item-title">{{ $t('plan.firstDay.4') }}</p>
+                </div>
               </div>
-              <div class="forum__item">
-                <span class="forum__item-date">10:10 - 10:25</span>
-                <p class="forum__item-title">Выступление на пути Всемирной туристской организации в сфере образования</p>
+
+              <div class="forum__second-day" style="display: contents;" v-show="activeDay == 2">
+                <div class="forum__item">
+                  <span class="forum__item-date">09:30 - 09:45</span>
+                  <p class="forum__item-title">{{ $t('plan.secondDay.1') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">10:00 - 11:00</span>
+                  <p class="forum__item-title">{{ $t('plan.secondDay.2') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">11:15 - 12:00</span>
+                  <p class="forum__item-title">{{ $t('plan.secondDay.3') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">12:15 - 12:45</span>
+                  <p class="forum__item-title">{{ $t('plan.secondDay.4') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">13:00 - 14:30</span>
+                  <p class="forum__item-title">{{ $t('plan.secondDay.5') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">14:30 - 16:30</span>
+                  <p class="forum__item-title">{{ $t('plan.secondDay.6') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">16:30 - 18:30</span>
+                  <p class="forum__item-title">{{ $t('plan.secondDay.7') }}</p>
+                </div>
+                <div class="forum__item">
+                  <span class="forum__item-date">19:00 - 20:30</span>
+                  <p class="forum__item-title">{{ $t('plan.secondDay.8') }}</p>
+                </div>
               </div>
-              <div class="forum__item">
-                <span class="forum__item-date">10:25 - 11:10</span>
-                <p class="forum__item-title">Министерская дискуссия на высшем уровне по политике поддержки инноваций и
-                  образования для нынешнего и будущих поколений</p>
-              </div>
-              <div class="forum__item">
-                <span class="forum__item-date">11:10 - 11:25</span>
-                <p class="forum__item-title">Основная лекция: открытие сил завтрашнего дня:
-                  трансформация технологий, инноваций и образования в безграничное будущее</p>
-              </div>
-              <div class="forum__item">
-                <span class="forum__item-date">11:25 - 12:10</span>
-                <p class="forum__item-title">Открывая горизонты: туризм как обязательный предмет для старшеклассников в
-                  школах, перспективы молодежи и презентация образовательного пакета UNWTO</p>
-              </div>
-              <div class="forum__item">
-                <span class="forum__item-date">12:10 - 12:25</span>
-                <p class="forum__item-title">Основная лекция: образование, инвестиции в будущее</p>
-              </div>
-              <div class="forum__item">
-                <span class="forum__item-date">12:25 - 12:35</span>
-                <p class="forum__item-title">Открытие/презентация академии туризма в Узбекистане</p>
-              </div>
-              <div class="forum__item">
-                <span class="forum__item-date">12:35 - 12:55</span>
-                <p class="forum__item-title">Церемония награждения: премия UNWTO Ulysses Award за достижения в области
-                  науки и распространения знаний в сфере туризма</p>
-              </div>
-              <div class="forum__item">
-                <span class="forum__item-date">12:55 - 13:00</span>
-                <p class="forum__item-title">Заключительная часть & церемония подписания документов</p>
+
+              <div class="forum__third-day" style="display: contents;" v-show="activeDay == 3">
+                <div class="forum__item">
+                  <span class="forum__item-date">09:30 - 13:00</span>
+                  <p class="forum__item-title">{{ $t('plan.thirdDay.1') }}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -97,7 +124,7 @@
 
   <!-- PROJECTS -->
 
-  <section class="projects">
+  <!-- <section class="projects">
     <div class="container">
       <div class="projects__inner">
         <h2 class="projects__title">{{ $t('projects.title') }}</h2>
@@ -113,7 +140,7 @@
         </ul>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- FORUM-SECOND -->
 
@@ -454,6 +481,7 @@
 .forum__item-title {
   font-family: "Bebas Neue", sans-serif;
   color: #020C4C;
+  white-space: pre-line;
 }
 
 /* PROJECTS */
@@ -594,8 +622,8 @@
   width: 100%;
   height: 100%;
   /* background-color: #000; */
-  /* opacity: 0.5; */
-/* } */ 
+/* opacity: 0.5; */
+/* } */
 
 .new__link::after {
   content: '';
@@ -853,7 +881,7 @@
   .projects__item {
     width: 48%;
   }
-  
+
   .projects__item:not(:last-child) {
     padding-bottom: 0;
     border-bottom: 0;
@@ -1151,9 +1179,9 @@
     height: 232px;
   }
 
-   /* GALLERIES */
+  /* GALLERIES */
 
-   .galleries {
+  .galleries {
     padding: 80px 0;
   }
 
@@ -1173,9 +1201,9 @@
     height: auto;
   }
 
-   /* PARTNERS */
+  /* PARTNERS */
 
-   .partners {
+  .partners {
     padding: 80px 0;
   }
 
@@ -1225,4 +1253,11 @@ const fetchProjects = async () => {
 fetchPhotos()
 fetchNews()
 fetchProjects()
+
+const activeDay = ref(1);
+
+const changeDay = (day) => {
+  activeDay.value = day;
+}
+
 </script>
