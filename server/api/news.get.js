@@ -17,9 +17,13 @@ export default defineEventHandler(async (event) => {
     title_uz: newsItem.attributes.title_uz,
     title_ru: newsItem.attributes.title_ru,
     title_en: newsItem.attributes.title_en,
+    title_ar: newsItem.attributes.title_ar,
+    title_fr: newsItem.attributes.title_fr,
     content_uz: newsItem.attributes.content_uz,
     content_ru: newsItem.attributes.content_ru,
     content_en: newsItem.attributes.content_en,
+    content_ar: newsItem.attributes.content_ar,
+    content_fr: newsItem.attributes.content_fr,
     photo: 'https://admin.shakhrisabz-2024.uz' + newsItem.attributes.photo.data.attributes.url
    }));
 });

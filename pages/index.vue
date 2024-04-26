@@ -50,8 +50,8 @@
                 {{ $t('plan.secondDay.title') }}
               </button>
               <button class="forum__btn" :class="{ 'forum__btn--active': activeDay == 3 }" @click="changeDay(3)">
-              {{ $t('plan.thirdDay.title') }}
-            </button>
+                {{ $t('plan.thirdDay.title') }}
+              </button>
             </div>
 
             <div class="forum__end-inner">
@@ -276,12 +276,41 @@
       <div class="galleries__inner">
         <h2 class="galleries__title">{{ $t('gallery.title') }}</h2>
 
-        <ul class="galleries__list">
-          <li class="galleries__item gallery" v-for="item in photos">
-            <img class="gallery__poster" :src="item.photo">
-          </li>
+        <!-- <div class="gallery__slider glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide" v-for="item in photos">
+                <img class="" :src="item.photo">
+              </li>
+            </ul>
+          </div>
+        </div> -->
 
-        </ul>
+        <!-- <div class="news__slider glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide news__item new">
+                <img class="new__poster" src="~/assets/img/bg-new-3.jpg" />
+                <div class="new__inner">
+                  <h3 class="new__title">Медресе Абдулкасим</h3>
+                  <a class="new__link" href="#">Подробно</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+
+        <Swiper :modules="[SwiperAutoplay, SwiperEffectCreative]" :slides-per-view="4" :loop="true" :effect="'creative'"
+          :autoplay="{
+            delay: 500,
+            disableOnInteraction: false,
+          }">
+          <SwiperSlide v-for="item in photos">
+            <img class="gallery__poster" :src="item.photo">
+          </SwiperSlide>
+        </Swiper>
+
+
       </div>
     </div>
   </section>
@@ -1223,41 +1252,63 @@
 }
 </style>
 
-<script setup>
-// Fetch photos object from /api/galleries
-// Fetch news object from /api/news
-
+<script>
+// import { Carousel, Slide } from 'vue-carousel';
 import { ref } from 'vue'
 
-const { locale } = useI18n()
+export default {
 
-const photos = ref([])
-const fetchPhotos = async () => {
-  const res = await fetch('/api/galleries')
-  photos.value = await res.json()
+  // components: {
+  //   Carousel,
+  //   Slide
+  // },
+
+  setup() {
+    const { locale } = useI18n()
+
+    const photos = ref([])
+    const fetchPhotos = async () => {
+      const res = await fetch('/api/galleries')
+      photos.value = await res.json()
+    }
+
+    const news = ref([])
+    const fetchNews = async () => {
+      const res = await fetch('/api/news')
+      news.value = await res.json()
+    }
+
+
+    const projects = ref([])
+    const fetchProjects = async () => {
+      const res = await fetch('/api/projects')
+      projects.value = await res.json()
+    }
+
+    fetchPhotos()
+    fetchNews()
+    fetchProjects()
+
+    const activeDay = ref(1);
+
+    const changeDay = (day) => {
+      activeDay.value = day;
+    }
+
+    return {
+      photos,
+      news,
+      projects,
+      activeDay,
+      changeDay,
+      locale
+    }
+  },
+
+  mounted() {
+    // Glide activate
+
+    // new Glide('.gallery__slider').mount()
+  }
 }
-
-const news = ref([])
-const fetchNews = async () => {
-  const res = await fetch('/api/news')
-  news.value = await res.json()
-}
-
-
-const projects = ref([])
-const fetchProjects = async () => {
-  const res = await fetch('/api/projects')
-  projects.value = await res.json()
-}
-
-fetchPhotos()
-fetchNews()
-fetchProjects()
-
-const activeDay = ref(1);
-
-const changeDay = (day) => {
-  activeDay.value = day;
-}
-
 </script>
